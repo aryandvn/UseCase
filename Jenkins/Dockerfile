@@ -7,7 +7,6 @@ RUN add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/debia
 RUN apt-get update  -qq && apt-get -y install docker-ce
 RUN usermod -aG docker jenkins
 
-COPY Jenkinsbackup.tar.gz /var/jenkins_home/
-RUN tar -xvzf /var/jenkins_home/Jenkinsbackup.tar.gz -C /var/jenkins_home/ && rm /var/jenkins_home/Jenkinsbackup.tar.gz
+COPY ./jenkins_home/ /var/jenkins_home/
 CMD ["java", "-jar", "/usr/share/jenkins/jenkins.war"]
 
